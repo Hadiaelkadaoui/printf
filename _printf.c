@@ -44,7 +44,7 @@ int _printf(const char *fmt, ...)
 		}
 	}
 
-	print_buff(buff, &buff_ind);
+	print_buffer(buff, &buff_ind);
 
 	va_end(list);
 
