@@ -233,7 +233,7 @@ int write_ptr(char buff[], int ind, int len,
 				buff[--ind] = xtra_c;
 			return (write(1, &buff[3], i - 3) + write(1, &buff[ind], len));
 		}
-		else if (!(flag & F_MINUS) && pad == '0')/* xtra char to left of pad */
+		else if (!(flag & FLAG_MINUS) && pad == '0')/* xtra char to left of pad */
 		{
 			if (xtra_c)
 				buff[--pad_start] = xtra_c;
