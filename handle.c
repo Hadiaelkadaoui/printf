@@ -15,18 +15,18 @@ int handler_print(const char *fmt, int *ind, va_list list, char buff[],
 	int flag, int width, int precision, int size)
 {
 	int i, unknow_len = 0, printed_chars = -1;
-	format_t format_types[] = {
+	fmt_t format_types[] = {
 		{'c', print_char}, {'s', print_string}, {'%', print_percent},
 		{'i', print_int}, {'d', print_int}, {'b', print_binary},
 		{'u', print_unsigned}, {'o', print_octal}, {'x', print_hexadecimal},
-		{'X', print_up_hexad}, {'p', print_ptr}, {'S', print_nonprintable},
+		{'X', print_up_hexa}, {'p', print_ptr}, {'S', print_non_printable},
 		{'r', print_rev}, {'R', print_rot13str}, {'\0', NULL}
 	};
-	for (i = 0; fmt_types[i].fmt != '\0'; i++)
-		if (fmt[*ind] == fmt_types[i].fmt)
-			return (fmt_types[i].fn(list, buff, flag, width, precision, size));
+	for (i = 0; format_types[i].fmt != '\0'; i++)
+		if (fmt[*ind] == format_types[i].fmt)
+			return (format_types[i].fn(list, buff, flag, width, precision, size));
 
-	if (fmt_types[i].fmt == '\0')
+	if (format_types[i].fmt == '\0')
 	{
 		if (fmt[*ind] == '\0')
 			return (-1);

@@ -53,7 +53,7 @@ int print_string(va_list types, char buff[],
 	}
 	if (width > len)
 	{
-		if (flag & F_MINUS)
+		if (flag & FLAG_MINUS)
 		{
 			write(1, &str[0], len);
 			for (i = width - len; i > 0; i--)
@@ -125,7 +125,7 @@ int print_int(va_list types, char buff[],
 		num /= 10;
 	}
 	i++;
-	return (write_number(is_negative, i, buff, flag, width, precision, size));
+	return (write_num(is_negative, i, buff, flag, width, precision, size));
 }
 /**
  * print_binary - Prints an unsigned number

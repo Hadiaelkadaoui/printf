@@ -83,8 +83,8 @@ int write_char_handle(char c, char buff[],
 	int flag, int width, int precision, int size);
 int write_num(int is_positive, int ind, char buff[],
 	int flag, int width, int precision, int size);
-int write_num(int ind, char buff[], int flag, int width, int precision,
-		int length, char padd, char extra_c);
+int write_num(int ind, char buff[],
+	int flag, int width, int precision, int length, char padd, char extra_c);
 int write_ptr(char buff[], int ind, int length,
 	int width, int flag, char pad, char extra_c, int pad_start);
 int write_unsgnd(int is_negative, int ind,

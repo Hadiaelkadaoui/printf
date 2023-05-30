@@ -20,7 +20,7 @@ int write_char_handle(char c, char buff[],
 	NONUSED(precision);
 	NONUSED(size);
 
-	if (flag & F_ZERO)
+	if (flag & FLAG_ZERO)
 		pad = '0';
 
 	buff[i++] = c;
@@ -32,7 +32,7 @@ int write_char_handle(char c, char buff[],
 		for (i = 0; i < width - 1; i++)
 			buff[BUFF_SIZE - i - 2] = pad;
 
-		if (flag & F_MINUS)
+		if (flag & FLAG_MINUS)
 			return (write(1, &buff[0], 1) +
 					write(1, &buff[BUFF_SIZE - i - 1], width - 1));
 		else
@@ -64,13 +64,13 @@ int write_num(int is_negative, int ind, char buff[],
 
 	NONUSED(size);
 
-	if ((flag & F_ZERO) && !(flag & F_MINUS))
+	if ((flag & FLAG_ZERO) && !(flag & FLAG_MINUS))
 		pad = '0';
 	if (is_negative)
 		xtra_ch = '-';
-	else if (flag & F_PLUS)
+	else if (flag & FLAG_PLUS)
 		xtra_ch = '+';
-	else if (flag & F_SPACE)
+	else if (flag & FLAG_SPACE)
 		xtra_ch = ' ';
 
 	return (write_num(ind, buff, flag, width, precision,
@@ -111,19 +111,19 @@ int write_num(int ind, char buff[],
 		for (i = 1; i < width - len + 1; i++)
 			buff[i] = pad;
 		buff[i] = '\0';
-		if (flag & F_MINUS && pad == ' ')/* Asign xtra char to left of buff */
+		if (flag & FLAG_MINUS && pad == ' ')/* Asign xtra char to left of buff */
 		{
 			if (xtra_c)
 				buff[--ind] = xtra_c;
 			return (write(1, &buff[ind], len) + write(1, &buff[1], i - 1));
 		}
-		else if (!(flag & F_MINUS) && pad == ' ')/* xtra char to left of buff */
+		else if (!(flag & FLAG_MINUS) && pad == ' ')/* xtra char to left of buff */
 		{
 			if (xtra_c)
 				buff[--ind] = xtra_c;
 			return (write(1, &buff[1], i - 1) + write(1, &buff[ind], len));
 		}
-		else if (!(flag & F_MINUS) && pad == '0')/* xtra char to left of pad */
+		else if (!(flag & FLAG_MINUS) && pad == '0')/* xtra char to left of pad */
 		{
 			if (xtra_c)
 				buff[--pad_start] = xtra_c;
@@ -171,7 +171,7 @@ int write_unsignd(int is_negative, int ind,
 		len++;
 	}
 
-	if ((flag & F_ZERO) && !(flag & F_MINUS))
+	if ((flag & FLAG_ZERO) && !(flag & FLAG_MINUS))
 		pad = '0';
 
 	if (width > len)
@@ -181,13 +181,13 @@ int write_unsignd(int is_negative, int ind,
 
 		buff[i] = '\0';
 
-		if (flag & F_MINUS) /* Asign xtra char to left of buff [buff>pad]*/
+		if (flag & FLAG_MINUS) /* Asign xtra char to left of buff [buff>pad]*/
 		{
 			return (write(1, &buff[ind], len) + write(1, &buff[0], i));
 		}
 		else /* Asign xtra char to left of pading [pad>buff]*/
 		{
-			return (write(1, &buff[0], i) + write(1, &buff[index], len));
+			return (write(1, &buff[0], i) + write(1, &buff[ind], len));
 		}
 	}
 
@@ -217,7 +217,7 @@ int write_ptr(char buff[], int ind, int len,
 		for (i = 3; i < width - len + 3; i++)
 			buff[i] = pad;
 		buff[i] = '\0';
-		if (flag & F_MINUS && pad == ' ')/* Asign xtra char to left of buff */
+		if (flag & FLAG_MINUS && pad == ' ')/* Asign xtra char to left of buff */
 		{
 			buff[--ind] = 'x';
 			buff[--ind] = '0';
