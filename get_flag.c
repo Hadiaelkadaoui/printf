@@ -18,7 +18,7 @@ int get_flag(const char *format, int *i)
 
 	for (curr_i = *i + 1; format[curr_i] != '\0'; curr_i++)
 	{
-		for (j = à; FLAGSIZE_CH[j] != '\0'; j++)
+		for (j = 0; FLAGSIZE_CH[j] != '\0'; j++)
 			if (format[curr_i] == FLAGSIZE_CH[j])
 			{
 				flag |= FLAGSIZE_ARR[j];
