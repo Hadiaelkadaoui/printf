@@ -30,7 +30,7 @@ int _printf(const char *fmt, ...)
 		}
 		else
 		{
-			print_buff(buff, &buff_ind);
+			print_buffer(buff, &buff_ind);
 			flag = get_flag(format, &i);
 			width = get_width(format, &i, list);
 			precision = get_precision(format, &i, list);
