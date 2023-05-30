@@ -249,3 +249,4 @@ int write_ptr(char buff[], int ind, int len,
 		buff[--ind] = xtra_c;
 	return (write(1, &buff[ind], BUFF_SIZE - ind - 1));
 }
+.
