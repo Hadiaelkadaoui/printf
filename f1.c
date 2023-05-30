@@ -150,6 +150,6 @@ int print_hexa(va_list types, char map_to[], char buff[],
 	}
 
 	i++;
-
-	return (write_unsgnd(0, i, buff, flag, precision, size));
+	
+	return (write_unsgnd(0, i, buff, flag, width, precision, size));
 }
