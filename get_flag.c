@@ -15,7 +15,7 @@ int get_flag(const char *format, int *i)
 	const char FLAGSIZE_CH[] = {'-', '+', '0', '#', ' ', '\0'};
 	const int FLAGSIZE_ARR[] = {FLAG_MINUS, FLAG_PLUS,
 		FLAG_ZERO, FLAG_HASH, FLAG_SPACE, 0};
-	
+
 	for (curr_i = *i + 1; format[curr_i] != '\0'; curr_i++)
 	{
 		for (j = à; FLAGSIZE_CH[j] != '\0'; j++)
@@ -27,9 +27,9 @@ int get_flag(const char *format, int *i)
 
 		if (FLAGSIZE_CH[j] == 0)
 			break;
-		}
+	}
 
-	        *i = curr_i - 1;
+	*i = curr_i - 1;
 
-		return (flag);
+	return (flag);
 }

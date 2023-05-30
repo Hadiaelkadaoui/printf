@@ -5,9 +5,9 @@
  * @types: List of arguments
  * @buff: Buffer
  * @flag: Calculates active flags
- * @width: Width
- * @precision: Precision
- * @size: Size
+ * @width: Width specifier
+ * @precision: Precision specifier
+ * @size: Size specifier
  * Return: Number of characters
  */
 
@@ -15,7 +15,7 @@ int print_ptr(va_list types, char buff[],
 		int flag, int width, int precision, int size)
 {
 	char xtra_c = 0, pad = ' ';
-	int index = BUFFER_SIZE - 2, len = 2, pad_start = 1;
+	int ind = BUFF_SIZE - 2, len = 2, pad_start = 1;
 	/* len=2, for '0x'*/
 	unsigned long num_addrs;
 	char map_to[] = "0123456789abcdef";
@@ -27,30 +27,27 @@ int print_ptr(va_list types, char buff[],
 	if (addrs == NULL)
 		return (write(1, "(nil)", 5));
 
-	buff[BUFFER_SIZE - 1] = '\0';
-
+	buff[BUFF_SIZE - 1] = '\0';
 	NONUSED(precision);
 
 	num_addrs = (unsigned long)addrs;
 
 	while (num_addrs > 0)
 	{
-		buff[index--] = map_to[num_addrs % 16];
+		buff[ind--] = map_to[num_addrs % 16];
 		num_addrs /= 16;
 		len++;
 	}
 
-	if ((flag & FLAG_ZERO) && !(flag & FLAG_MINUS))
+	if ((flag & F_ZERO) && !(flag & F_MINUS))
 		pad = '0';
+	if (flag & F_PLUS)
+		xtra_c = '+', len++;
+	else if (flag & F_SPACE)
+		xtra_c = ' ', len++;
+	ind++;
 
-	if (flag & FLAG_PLUS)
-			xtra_c = '+', len++;
-	else if (flag & FLAG_SPACE)
-	                xtra_c = ' ', len++;
-
-	index++;
-
-	return (write_ptr(buff, index, len, width, flag, pad, xtra_c, pad_start));
+	return (write_ptr(buff, ind, len, width, flag, pad, xtra_c, pad_start));
 }
 
 /**
@@ -133,7 +130,7 @@ int print_rev(va_list types, char buff[],
 
 		write(1, &z, 1);
 		count++;
-        }
+	}
 
 	return (count);
 }
