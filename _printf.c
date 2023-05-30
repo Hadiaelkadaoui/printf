@@ -25,18 +25,18 @@ int _printf(const char *fmt, ...)
 		{
 			buff[buff_ind++] = format[i];
 			if (buff_ind == BUFF_SIZE)
-				print_buff(buff, &buff_ind);
+				print_buffer(buff, &buff_ind);
 			printed_chars++;
 		}
 		else
 		{
-			print_buff(buff, &buff_ind);
+			print_buffer(buff, &buff_ind);
 			flag = get_flag(format, &i);
 			width = get_width(format, &i, list);
 			precision = get_precision(format, &i, list);
 			size = get_size(format, &i);
 			++i;
-			printed = handle_print(format, &i, list, buff,
+			printed = handler_print(format, &i, list, buff,
 					flag, width, precision, size);
 			if (printed == -1)
 				return (-1);
@@ -44,7 +44,7 @@ int _printf(const char *fmt, ...)
 		}
 	}
 
-	print_buff(buff, &buff_ind);
+	print_buffer(buff, &buff_ind);
 
 	va_end(list);
 
