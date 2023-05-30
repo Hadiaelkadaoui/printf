@@ -19,7 +19,7 @@ int handler_print(const char *fmt, int *ind, va_list list, char buff[],
 		{'c', print_char}, {'s', print_string}, {'%', print_percent},
 		{'i', print_int}, {'d', print_int}, {'b', print_binary},
 		{'u', print_unsigned}, {'o', print_octal}, {'x', print_hexadecimal},
-		{'X', print_up_hexa}, {'p', print_ptr}, {'S', print_non_printable},
+		{'X', print_hexa}, {'p', print_ptr}, {'S', print_non_printable},
 		{'r', print_rev}, {'R', print_rot13str}, {'\0', NULL}
 	};
 	for (i = 0; format_types[i].fmt != '\0'; i++)
