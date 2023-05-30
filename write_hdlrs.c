@@ -225,7 +225,7 @@ int write_ptr(char buff[], int ind, int len,
 				buff[--ind] = xtra_c;
 			return (write(1, &buff[ind], len) + write(1, &buff[3], i - 3));
 		}
-		else if (!(flag & F_MINUS) && pad == ' ')/* xtra char to left of buff */
+		else if (!(flag & FLAG_MINUS) && pad == ' ')/* xtra char to left of buff */
 		{
 			buff[--ind] = 'x';
 			buff[--ind] = '0';
