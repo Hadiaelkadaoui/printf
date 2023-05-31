@@ -126,7 +126,7 @@ int print_int(va_list types, char buff[],
 	}
 	i++;
 	
-	return (write_num(is_negative, in, buff, flag, width, precision, size));
+	return (write_num(is_negative, i, buff, flag, width, precision, size));
 }
 /**
  * print_binary - Prints an unsigned number
