@@ -93,28 +93,6 @@ int print_rot13string(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* width handler */
-<<<<<<< HEAD
-int write_char_handle(char c, char buff[],
-	int flag, int width, int precision, int size);
-int write_number(int is_positive, int index, char buff[],
-	int flag, int width, int precision, int size);
-<<<<<<< HEAD
-int write_num(int ind, char buff[],
-	int flag, int width, int precision, int len, char pad, char xtra_c);
-int write_ptr(char buff[], int ind, int len,
-	int width, int flag, char pad, char extra_c, int pad_start);
-int write_unsgnd(int is_negative, int ind,
-=======
-int write_num(int index, char bff[], int flag, int width, int precision,
-	int len, char pad, char xtra_c);
-int write_ptr(char buff[], int index, int len,
-	int width, int flag, char pad, char xtra_c, int pad_start);
-
-int write_unsignd(int is_negative, int index,
->>>>>>> e17ffb6bbd332eaadc1e43fcbb2a784effbf60f3
-char buff[],
-	int flag, int width, int precision, int size);
-=======
 int handle_write_char(char c, char buffer[],
 	int flags, int width, int precision, int size);
 int write_number(int is_positive, int ind, char buffer[],
@@ -127,7 +105,6 @@ int write_pointer(char buffer[], int ind, int length,
 int write_unsgnd(int is_negative, int ind,
 char buffer[],
 	int flags, int width, int precision, int size);
->>>>>>> be32b449323ad1b7d03a306febfe0671ebc4511d
 
 /****************** UTILS ******************/
 int is_printable(char);
